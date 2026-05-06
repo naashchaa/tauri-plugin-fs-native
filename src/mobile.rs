@@ -13,23 +13,23 @@ tauri::ios_plugin_binding!(init_plugin_fs_light);
 pub fn init<R: Runtime, C: DeserializeOwned>(
     _app: &AppHandle<R>,
     api: PluginApi<R, C>,
-) -> crate::Result<FsLight<R>> {
+) -> crate::Result<FsNative<R>> {
     #[cfg(target_os = "android")]
     let handle = api.register_android_plugin("com.plugin.fsnative", "FsNativePlugin")?;
     #[cfg(target_os = "ios")]
     let handle = api.register_ios_plugin(init_plugin_fs_light)?;
-    Ok(FsLight(handle))
+    Ok(FsNative(handle))
 }
 
 /// Access to the fs-light APIs.
-pub struct FsLight<R: Runtime>(PluginHandle<R>);
+pub struct FsNative<R: Runtime>(PluginHandle<R>);
 
 #[derive(Deserialize)]
 struct CommandOutput {
     content: String,
 }
 
-impl<R: Runtime> FsLight<R> {
+impl<R: Runtime> FsNative<R> {
     pub fn read_to_string(&self, path: String) -> Result<String, PluginInvokeError> {
         Ok(self
             .0

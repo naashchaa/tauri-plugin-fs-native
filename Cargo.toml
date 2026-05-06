@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-fs-native"
-version = "1.0.0"
+version = "2.0.0"
 authors = [ "naashchaa" ]
 description = "A Rust-oriented implementation of tauri-plugin-fs"
 edition = "2021"

@@ -1,4 +1,4 @@
-package com.plugin.fslight
+package com.plugin.fsnative
 
 import org.junit.Test
 
